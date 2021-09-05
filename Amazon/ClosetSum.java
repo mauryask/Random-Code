@@ -23,7 +23,8 @@ public class ClosetSum
 		{
 			/*
 			* Maintain minDiff variable
-			* Minimum the value of the minDiff (diff. between sum and temp)
+			* Minimum the value of the minDiff
+			*(diff. between sum and temp)
 			* More closer the sum will be to the temp
 			*/
 						
@@ -39,7 +40,7 @@ public class ClosetSum
 			
 			/* 
 			* The purpose of following operation is
-			* to move the pointer towads the pairs 
+			* to move the pointer towards the pairs 
 			* that can give sum closer to the 
 			* the given value (target)
 			*/

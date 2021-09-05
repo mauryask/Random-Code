@@ -10,7 +10,6 @@ import static java.lang.System.*;
 
 public class FindTheMissingNumber2
 {
-
 	static int findMissing(int A[], int n)
 	{
 		int arrSum = 0;

@@ -11,7 +11,6 @@ Here Array need not to be sorted
 import static java.lang.System.*;
 import java.util.*;
 
-
 public class FindingMissingAndDuplicateNumberInA12NArray
 {
 	static void findMissingAndDuplicate(int A[], int n)

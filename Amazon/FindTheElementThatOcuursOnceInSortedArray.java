@@ -26,6 +26,9 @@ public class FindTheElementThatOcuursOnceInSortedArray
 	/*
 	* Since xor of two similiar elements gives 0
 	* at the end we will get the element
+	***
+	* T(n) = O(n)
+	* S(n) = O(1)
 	*/
 	
 	static int findEle2(int A[], int n)
@@ -33,9 +36,7 @@ public class FindTheElementThatOcuursOnceInSortedArray
 		int xor = 0;
 		
 		for(int i=0; i<n; i++)
-		{
 			xor ^= A[i];
-		}
 		
 		return xor;
 	}
@@ -67,11 +68,8 @@ public class FindTheElementThatOcuursOnceInSortedArray
 		 int start = 0;
 		 int end = n-1;
 		 
-		 while(true)
-		 {
-			 if(start > end)
-				 return -1;
-			 
+		 while(start <= end)
+		 {		 
 			 if(start == end)
 				 return A[start];
 			 
@@ -93,6 +91,8 @@ public class FindTheElementThatOcuursOnceInSortedArray
 						 end = mid-1; // subtract 1; from above logic
 			 }
 		 }
+		 
+		 return -1;
 	 }
 
 	public static void main (String[] args)
