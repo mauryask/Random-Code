@@ -21,6 +21,11 @@ public class MaxSubstringwithKUniqueCharacters
 	   */
 	   int maxLen = -1;
 	   
+	   /*
+	   * Purpose of using map is to
+	   * keep track of number of unique charcater
+	   * in a window
+	   */
 	   Map<Character, Integer> map = new HashMap<>();
 	   
 	   while(j<n)
@@ -31,7 +36,7 @@ public class MaxSubstringwithKUniqueCharacters
 		   /*
 		   * put each character in the map
 		   * if character is alrady present 
-		   * increase its frequency of the chaacter
+		   * increase its frequency of the character
 		   */
 		   
 		   map.put(ch, map.getOrDefault(ch, 0)+1);
@@ -45,13 +50,14 @@ public class MaxSubstringwithKUniqueCharacters
 		   if(map.size() == k)
 			  maxLen =  Math.max(maxLen, j-i+1);
 		  /*
-		  * If size > 'k'  remove charcater from 
-		  * which is at ith index in the string
+		  * If size > 'k'  remove charcater 
+		  * at i-th index in the string
 		  * and increment i
 		  * decrese frequency if charcater present in map
 		  ******************
 		  * At the same time check if frequency of caharacter
-		  * is 0 remove it, other wise it will give 
+		  * is 0 remove it (because it is no longer present
+		  * in the existing window), other wise it will give 
 		  * incorrect number of unique characters 
 		  * in a particular window
 		  */
@@ -74,12 +80,39 @@ public class MaxSubstringwithKUniqueCharacters
 		return maxLen;	   
 	}
 		
+	/*
+	* T(n) : O(n*n)
+	* S(n) : O(n)
+	*/	
+	
+	static int bruteForce(String str, int n, int k)
+	{
+		Map<Character, Integer> map = new HashMap<>();;
+		int maxLen = Integer.MIN_VALUE;	
+		
+		for(int i=0; i<n; i++)
+		{
+			for(int j=i; j<n; j++)
+			{
+				char ch = str.charAt(j);
+				map.put(ch, map.getOrDefault(ch, 0)+1);
+				if(map.size() == k)
+					maxLen = Math.max(maxLen, j-i+1);
+			}
+			
+			map.clear();
+		}
+		
+		return maxLen;
+	}	
+		
 	public static void main(String [] args)
 	{
 		String str =  "aabacbebebe";
 		int n = str.length();
 		int k = 3;
 		
-		out.println(maxSubString(str, n, k));
+		//out.println(maxSubString(str, n, k));
+		out.println(bruteForce(str, n, k));
 	}
 }
