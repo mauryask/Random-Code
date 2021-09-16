@@ -24,7 +24,6 @@ class MaxProductSubArray
 				int temp = maxVal;
 				maxVal = minVal;
 				minVal =temp;
-			
 			}
 	
 			// maxVal and minVal stores the

@@ -117,8 +117,7 @@ public class RottenOranges
 			{
 				A[x][y+1] = 2;
 				q.add(new Orange(t+1, x, y+1));
-			}
-				
+			}	
 		}
 	
 	public static void main(String [] args)

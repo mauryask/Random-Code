@@ -3,7 +3,6 @@ import java.util.*;
 
 public class AsteroidCollision
 {		 
-
   // Solution-1
    static void asteroidState(int[] A, int n)
    {
@@ -95,7 +94,9 @@ public class AsteroidCollision
 				   /*
 				   * Even after removing top of stack
 				   * there might be chances of collision
-				   * so update x until the constion holds
+				   * so update x until the condition holds
+				   ****
+				   * top of stack reprseents the current asteroid
 				   */
 				   int y = stack.pop();
 				  
@@ -106,6 +107,7 @@ public class AsteroidCollision
 				   }
 				   /*
 				   * The one which is smaller will explode
+				   * x is the asteroid that will persist
 				   */
 				   else if((-x) < y)
 					   x = y;
