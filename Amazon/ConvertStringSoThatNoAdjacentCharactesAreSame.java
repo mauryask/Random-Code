@@ -46,25 +46,20 @@ public class ConvertStringSoThatNoAdjacentCharactesAreSame
 	   
 	   // first fill the even positions
 	   for(int i = 0; i<n; i+=2)
-	   {
-		 char c = list.get(0);
-         
-		 map.replace(c, map.get(c)-1);	
-         
-		 if(map.get(c) == 0)
-		 {
-			 map.remove(c);
-			 list.remove(0);
-		 }
-		 
-		 ch[i] = c;
- 	   }
-
+	      fillPosion(ch, i, map, list);
 
 	   // then fill the odd positions
 	   for(int i=1; i<n; i+=2)
-	   {
-		  char c = list.get(0);
+	      fillPosion(ch, i, map, list);
+	   
+	   // return the final result
+	   return String.valueOf(ch);
+   }
+   
+   // helper function to fill the char array
+   static void fillPosion(char ch[], int i, Map<Character, Integer> map, List<Character> list)
+   {
+	      char c = list.get(0);
          
 		  map.replace(c, map.get(c)-1);	
          
@@ -75,10 +70,6 @@ public class ConvertStringSoThatNoAdjacentCharactesAreSame
 		  }
 		 
 		  ch[i] = c;
-	   }
-	   
-	   // return the final result
-	   return String.valueOf(ch);
    }
 
    public static void main(String [] args)

@@ -45,65 +45,69 @@ public class RemoveDuplicatesFromLinkedLists
 		out.println();
 	}
 	
-	/*Method-1
+	/*
+	* Method-1
+	* Removing duplicate the node completely
 	***********
 	* T(n) : O(n)
 	* S(n) : O(1)
 	*/
 	
-	static void removeDulicates()
+	static void method1()
 	{
 		if(head == null)
 			return;
 		
 		Node p1 = head;
 		Node p2 = head.next;
+		Node temp = p2;
 		
-		while(true)
+		while(p2 != null)
 		{
-			if(p2 == null)
-			{
-				p1.next = p2;
-				return;
-			}
-			
 			if(p1.data == p2.data)
-				p2 = p2.next;
+			{
+				p1.next = temp.next;
+				temp = temp.next;
+				p2.next = null;
+				p2 = temp;
+			}
 			else
 			{
-				p1.next = p2;
-				p1 = p2;
-				p2= p2.next;
+				p1 = p1.next;
+				temp = temp.next;
+				p2 = temp;
 			}
 		}
 	}
-	
-	/* Method-2
-	*********
-	* T(n) = O(n)
-	* S(n) = O(n)
-	*/
-	
-	static void removeDulicates2()
-	{
-		Map<Integer, Node> map = new HashMap<>();
-		Node prev = new Node(-1);
-		Node ptr = head;
 		
-		while(ptr != null)
+	/*
+	 * Method-2
+	 * removing the duplicates by replacement 
+	 * the simplest method
+	 */
+	
+	static void method2()
+	{
+		if(head == null)
+			return;
+		
+		Node p1 = head;
+		Node p2 = head.next;
+		Node  temp = p2;
+		
+		while(p2 != null)
 		{
-			if(!map.containsKey(ptr.data))
+			if(p1.data == p2.data)
+				p2 = p2.next;
+			else 
 			{
-				map.put(ptr.data, ptr);
-				prev.next = ptr;
-				prev = ptr;
+				temp.data = p2.data;
+				temp = temp.next; 
+				p1 = p1.next;
 			}
-			
-			ptr = ptr.next;
 		}
 		
-	   // 2 2 6 7 8 9 9 9 
-		prev.next = ptr;
+		p1.next =  null;
 	}
 	
 	public static void main(String [] args)
@@ -118,9 +122,8 @@ public class RemoveDuplicatesFromLinkedLists
 		insertNode(9);
 		
 		printList();
-		
-		removeDulicates2();
-		
+		method2();
+		//method3();
 		printList();
 	}
 }

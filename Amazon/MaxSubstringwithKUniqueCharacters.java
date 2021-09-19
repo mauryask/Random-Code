@@ -88,10 +88,13 @@ public class MaxSubstringwithKUniqueCharacters
 	static int bruteForce(String str, int n, int k)
 	{
 		Map<Character, Integer> map = new HashMap<>();;
-		int maxLen = Integer.MIN_VALUE;	
+		int maxLen = 0;	
 		
 		for(int i=0; i<n; i++)
 		{
+			if(n-i < k)
+				break;
+			
 			for(int j=i; j<n; j++)
 			{
 				char ch = str.charAt(j);

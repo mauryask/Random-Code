@@ -28,7 +28,7 @@ public class SwapSort
 				* Now can do nothing just go
 				* to next element
 				*/
-				if(A[tempIndex] == A[i])
+				if(A[tempIndex] == temp)
 				{
 					out.println("Missing: "+(i+1)+
 					"\nDuplicate: "+A[i]+
