@@ -3,8 +3,13 @@
 * Space complexity : O(1)
 ***************
 * This algorithm works for 
-* multiple missing multiple duplicates
-* as well
+* only works in case of one missing 
+* and one duplictae case 
+*********
+** Always remember
+** Not in case of multiple missing multiple duplicate
+**********
+https://www.geeksforgeeks.org/find-a-repeating-and-a-missing-number/
 */
 
 import static java.lang.System.*;

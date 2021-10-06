@@ -36,6 +36,15 @@ public class ClosetSum
 				minDiff = diff;
 				sol[0] = A[start];
 				sol[1] = A[end];
+				
+				/*
+				*  if diff = 0, means (sum = temp) 
+				*  this is going to the closest sum don't 
+				*  need to continue our search further
+				*/
+				
+				if(diff =  0)
+					return sol;
 			}				
 			
 			/* 

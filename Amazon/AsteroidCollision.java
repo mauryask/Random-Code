@@ -14,7 +14,7 @@ public class AsteroidCollision
 	   int p1 = list.size()-1;
 	   int p2 = p1-1;
 	   
-	   while(true)
+	   while(p2 >= 0)
 	   {
 		   /*
 		   * Check if collision condition is met
@@ -52,11 +52,6 @@ public class AsteroidCollision
 			   p1--;
 			   p2--;
 		   }
-		   
-		   // check if array end is reached
-		   // or stack becomes empty
-		   if(p2 < 0 || list.isEmpty())
-			   break;
 	   }
 	   
 	  out.println(list);
@@ -136,6 +131,7 @@ public class AsteroidCollision
 	{
 		int A[] = {10,2,-5};
 		int n = A.length;
-		asteroidCollision(A, n);
+		//asteroidCollision(A, n);
+		asteroidState(A, n);
 	}	
 }
