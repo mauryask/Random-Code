@@ -1,6 +1,8 @@
 /*
 * T(n) : O(n) 
 * S(n) : O(1)
+********** KMP string search 
+********** This implementation is not right
 *************
 ** https://www.geeksforgeeks.org/check-string-substring-another/
 */
