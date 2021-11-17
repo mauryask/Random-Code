@@ -13,30 +13,31 @@ public class RowWithMAx1s
 
 	static int rowWithMax1s(int mat[][])
 	{
-		// Initialize first row as row with max 1s
-		int j,max_row_index = -1;
-		j = n - 1;
-
-		for (int i = 0; i < m; i++) 
+	     // if no row has 1	
+		int maxRow = -1;
+		
+		int i=0, j = n-1;
+		
+		while(i<m && j>=0)
 		{
-			// Move left until a 0 is found
-			while (j >= 0 && mat[i][j] == 1) 
+			if(mat[i][j] == 1)
 			{
-				j--; 
-			  // Update max_row_index
-				max_row_index = i; 
+				maxRow = i;
+				j--;
 			}
+			else
+				i++;
 		}
-
-		return max_row_index;
+		
+		return maxRow;
 	}
 
 	public static void main(String[] args)
 	{
-		int mat[][] = { { 0, 0, 0, 0 },
-						{ 0, 0, 0, 0 },
-						{ 0, 0, 0, 0},
-						{ 0, 0, 0, 0 } };
+		int mat[][] = { { 0, 0, 0, 1 },
+                        { 0, 1, 1, 1 },
+                        { 1, 1, 1, 1 },
+                        { 0, 0, 0, 0 } };
 						
 		System.out.println(rowWithMax1s(mat));
 	}

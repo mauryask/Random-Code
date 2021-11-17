@@ -38,6 +38,7 @@ public class SwapSort
 					out.println("Missing: "+(i+1)+
 					"\nDuplicate: "+A[i]+
 					"\n========");
+					break;
 				}
 				else
 				{
