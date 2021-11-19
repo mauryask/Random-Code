@@ -44,15 +44,17 @@ class Tree
 		
 	static void createSpiralTree()
 	{
-		Node root = null;
-    
 	   Stack<Node> s1 = new Stack<>();
 	   Stack<Node> s2 = new Stack<>();
-	   s1.push(getNode());
+	   Node root = getNode();
+	   if(root == null)
+		   return; // return null
+
+	   s1.push(root);
 		
 	   boolean lr =  true;
 		
-		while(true)
+		while(!s1.isEmpty() || !s2.isEmpty())
 		{
 		  // Add node left to right 
            if(lr)
@@ -60,9 +62,6 @@ class Tree
 			   while(!s1.isEmpty())
 			   {
 				   Node node = s1.pop();
-				   
-				   if(root == null)
-					   root = node;
 				   
 				   node.left = getNode();
 				   if(node.left != null)
@@ -90,11 +89,6 @@ class Tree
 				   
 				   lr = true;
 			}
-			
-			// Break the loop if stacks becomes empty
-			
-			if(s1.isEmpty() && s2.isEmpty())
-				break;
 		}
 		
 		// Print Tree
