@@ -1,7 +1,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class ConvertStringSoThatNoAdjacentCharactesAreSame
+public class RearrangeStringSoThatNoAdjacentCharactesAreSame
 {	
    static String changeString(String str, int n)
    {
@@ -20,16 +20,13 @@ public class ConvertStringSoThatNoAdjacentCharactesAreSame
 	   for(char c : ch)
 	   {
 		   if(map.containsKey(c))
-		   {
-			    map.replace(c, map.get(c)+1);
-				maxFreq = Math.max(maxFreq, map.get(c));
-		   }
+			   map.replace(c, map.get(c)+1);
 		   else
 		   {
 			   map.put(c,1);
 			   list.add(c);
-			   maxFreq = Math.max(maxFreq, 1);
 		   }
+		  maxFreq = Math.max(maxFreq, map.get(c));
 	   }
 	   
 	   // Check if such string possibles
@@ -41,7 +38,7 @@ public class ConvertStringSoThatNoAdjacentCharactesAreSame
 	   // Sort the list acording to character
 	   // frequency in descending order
 	   Collections.sort(list, (a, b)->{
-		   return map.get(b) > map.get(a) ? 1 : -1;
+		   return map.get(b) - map.get(a);
 	   });
 	   
 	   // first fill the even positions
