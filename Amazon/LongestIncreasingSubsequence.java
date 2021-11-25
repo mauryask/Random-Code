@@ -1,9 +1,10 @@
 /*
 * T(n) : O(n*n)
 * S(n) : O(n)
-** Satisfies all the test cases 
+** Satisfies all the test cases
 ** of the Leet Code
 */
+
 import static java.lang.System.*;
 import java.util.*;
 

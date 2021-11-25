@@ -3,15 +3,27 @@
 * T(n) : O(n*n)
 * S(n) : O(n)
 */
-
 import static java.lang.System.*;
 import java.util.*;
 
 public class LongestBitonicSubsequence
 {
+	int lisSeq[];
+	int ldsSeq[];
+	int n;
+	static int peakIndex = 0;
+	
+	LongestBitonicSubsequence(int n)
+	{
+		this.n = n;
+		lisSeq =  new int[n];
+		ldsSeq =  new int[n];
+		Arrays.fill(lisSeq, -1);
+		Arrays.fill(ldsSeq, -1);
+	}
 	// it is nothing but longest 
 	// increasing from right
-	static int[] lds(int A[], int n)
+	int[] lds(int A[], int n)
 	{
 		int ldsLen[] = new int[n];
 		Arrays.fill(ldsLen, 1);
@@ -23,7 +35,10 @@ public class LongestBitonicSubsequence
 				if(A[i] > A[j])
 				{
 					if(ldsLen[i] <= ldsLen[j]+1)
+					{
 						ldsLen[i] = ldsLen[j] + 1;
+						ldsSeq[i] = j;
+					}
 				}
 			}
 		}
@@ -32,7 +47,7 @@ public class LongestBitonicSubsequence
 	}
 	
 	// longest increasing from left
-	static int[] lis(int[] A, int n)
+	int[] lis(int[] A, int n)
 	{
 		int lisLen[] = new int[n];
 		Arrays.fill(lisLen, 1);
@@ -44,7 +59,10 @@ public class LongestBitonicSubsequence
 				if(A[i] > A[j])
 				{
 					if(lisLen[j]+1 >= lisLen[i])
-				       lisLen[i] = lisLen[j] + 1;			   
+					{
+						lisLen[i] = lisLen[j] + 1;
+						lisSeq[i] = j;
+					}			   
 				}
 			}
 		}
@@ -52,19 +70,56 @@ public class LongestBitonicSubsequence
 		return lisLen;
 	}
 	
+	void printSequence(int[] A)
+	{
+		//lis 
+		int temp =  peakIndex;
+		List<Integer> list = new LinkedList<>();
+		
+		while(lisSeq[temp] != -1)
+		{
+			list.add(0,A[temp]);
+			temp = lisSeq[temp];
+		}
+		
+        list.add(0,A[temp]);
+        		
+		// lds
+		
+		temp = ldsSeq[peakIndex];
+		
+		while(ldsSeq[temp] != -1)
+		{
+		   list.add(A[temp]);
+           temp = ldsSeq[temp];		   
+		}
+		
+		list.add(A[temp]);
+		out.println(list);
+	}
+	
 	public static void main(String [] args)
 	{
-		int A[] = {80, 60, 30, 40, 20, 10};
+		int A[] = {1,11,2,10,4,5,2,1};
 		int n = A.length;
-		
-		int []ldsLen = lds(A, n);
-		int []lisLen = lis(A, n);
+		LongestBitonicSubsequence lbs = new LongestBitonicSubsequence(n);
+		int []ldsLen = lbs.lds(A, n);
+		int []lisLen = lbs.lis(A, n);
 				
 	    int lbsLen = 1;
 
         for(int i=0; i<n; i++)
-          lbsLen = Math.max(lbsLen, ldsLen[i]+lisLen[i]-1);		
+		{
+			int temp = lisLen[i] + ldsLen[i] - 1;
+			
+			if(lbsLen < temp)
+			{
+				lbsLen = temp;
+				peakIndex = i;
+			}
+		}	
 	  
-        out.println(lbsLen);	  
+        out.println("LBS length: "+lbsLen);	
+        lbs.printSequence(A);		
 	}
 }

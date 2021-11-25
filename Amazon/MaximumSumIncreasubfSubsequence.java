@@ -26,8 +26,7 @@ public class MaximumSumIncreasubfSubsequence
 					maxSum = Math.max(maxSum, sumArr[i]);
 				}
 			}
-		}
-		
+		}	
 		return maxSum;
 	}
 	
