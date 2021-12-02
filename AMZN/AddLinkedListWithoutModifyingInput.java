@@ -3,11 +3,6 @@
 * Space complexity : O(1)
 */
 
-/**
-* Interview round-4
-* https://www.geeksforgeeks.org/amazon-interview-experience-for-sde-1-off-campus-4/ 
-*/
-
 import static java.lang.System.*;
 import java.util.*;
 
