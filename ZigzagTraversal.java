@@ -9,6 +9,7 @@ import java.util.*;
 * Zig-zag traversal
 * works for square matrix : if n is even only
 */
+
 public class ZigzagTraversal
 {
 	static void printTraversal(int[][] A, int n)
@@ -19,7 +20,8 @@ public class ZigzagTraversal
         //left upper triangular region(including right inclined diagonal)		
 		for(i=0; i<n; i++)
 		{
-			int k = 0;
+			    int k = 0;
+				
 				for(j=i; j>=0; j--)
 				{
 					if(i%2==0)
@@ -27,6 +29,7 @@ public class ZigzagTraversal
 					else
 						out.print(A[k++][j]+" ");
 				}
+				
 			out.println();
 		}
 		
