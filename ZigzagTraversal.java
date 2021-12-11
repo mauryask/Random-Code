@@ -1,5 +1,7 @@
 /*
-* T(n) : O(2^n)
+** This program is related to the 
+** project: Image forgery detection
+* T(n) : O(n*n)
 * S(n) : O(n*n)
 */
 import static java.lang.System.*;
