@@ -1,8 +1,8 @@
 /*
 ** This program is related to the 
 ** project: Image forgery detection
-* T(n) : O(n*n)
-* S(n) : O(n*n)
+* T(n) : O(n^2)
+* S(n) : O(n^2)
 */
 import static java.lang.System.*;
 import java.util.*;
