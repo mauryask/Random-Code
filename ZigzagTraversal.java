@@ -4,6 +4,7 @@
 * T(n) : O(n^2)
 * S(n) : O(n^2)
 */
+
 import static java.lang.System.*;
 import java.util.*;
 
@@ -20,6 +21,7 @@ public class ZigzagTraversal
 		int j = 0;
 		
         //left upper triangular region(including right inclined diagonal)		
+
 		for(i=0; i<n; i++)
 		{
 			    int k = 0;
