@@ -1,6 +1,7 @@
 /*
 * T(n) : O(n*n) : in worst case all the cells will be visited
 * S(n) : O(n*n)
+** It is same as the 
 ** https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/
 */
 import static java.lang.System.*;
@@ -29,7 +30,6 @@ public class MinimumStesToReachSourecToTargetKnightTour
 	{
 		Queue<KnightMove> q = new ArrayDeque<>();
 		q.add(new KnightMove(srcX,srcY,0));
-		int minStep = Integer.MAX_VALUE;
 		boolean visited[][] = new boolean[n][n];
 		visited[srcX][srcY] = true;
 		
@@ -41,7 +41,10 @@ public class MinimumStesToReachSourecToTargetKnightTour
 			int step = knight.step;
 			
 			if(x==trgX && y==targY)
-				minStep = Math.min(step, minStep);
+			{
+				out.println(step);
+				return;
+			}
 			
 			for(int i=0; i<8; i++)
 			{
@@ -56,12 +59,12 @@ public class MinimumStesToReachSourecToTargetKnightTour
 			}
 		}
 		
-		out.println(minStep);
+		out.println(-1);
 	}
 	
 	public static void main(String [] args)
 	{
 		int n = 8;
-		minSteps(n,3,4,0,0);
+		minSteps(n,0,0,5,4);
 	}
 }
