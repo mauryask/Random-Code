@@ -91,7 +91,15 @@ public class MinimumPlatformsNeeded
 	static int bestSolution(int[] arr, int[] dep, int n)
 	{
 		int minPlat = 1;
+		// sorting the arrival times because the
+		// train that arrives first will be assigned the 
+		// platform first
+		
 		Arrays.sort(arr);
+		
+		// sorting ther departure time because 
+		// when train the train that will leave  
+		// the platform the platform is going to be empty
 		Arrays.sort(dep);
 		
 		int i = 0;
