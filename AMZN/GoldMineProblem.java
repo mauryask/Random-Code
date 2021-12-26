@@ -6,6 +6,14 @@ import java.util.*;
 
 public class GoldMineProblem
 {
+
+	/*
+	* T(n) : Kind of cubic : (m*m*n) : not sure
+	* S(n) : O(1) : if recursion stack is not considered
+	* since there are lot of overlapping sub problems
+	* we can go with dp;
+	*/
+
 	static int bruteForce(int[][] A, int m, int n)
 	{
 		int maxGold = 0;
@@ -17,14 +25,7 @@ public class GoldMineProblem
 		
 		return maxGold;
 	}
-	
-	/*
-	* T(n) : Kind of cubic : (m*m*n) > mot sure
-	* S(n) : O(1) > if recursion stack is not considered
-	* since there are lot of overlapping sub problems
-	* we can go with dp;
-	*/
-	
+		
 	static int collectGold(int[][] A, int i, int j, int m, int n)
 	{
 	   if(!isSafe(i,j,m,n))
@@ -46,7 +47,7 @@ public class GoldMineProblem
 	{
 	    int max = 0;
 		
-		for(int j=n-2; j>=0; j--)
+		for(int j=n-1; j>=0; j--)
 		{
 			for(int i=m-1; i>=0; i--)
 			{
