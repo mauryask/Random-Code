@@ -1,5 +1,5 @@
 /*
-* T(n) : O(n*log m)
+* T(n) : O(n*logm)
 * S(n) : O(n)
 ** https://www.geeksforgeeks.org/max-sum-of-m-non-overlapping-subarrays-of-size-k/
 */
