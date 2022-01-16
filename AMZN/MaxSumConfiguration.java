@@ -5,23 +5,25 @@ public class MaxSumConfiguration
 {
 	static int maxSumConfig(int[] A,int n)
 	{
-	    int sum = 0;
-        for(int x: A)
-			sum += x;
+	    int arrSum = 0;
+		int configSum = 0;
+		int maxConfigSum = 0;
 		
-	    int s = 0;
 		for(int i=0; i<n; i++)
-			s += i*A[i];
-		
-		int maxSum = s;
-		// Si+1 = Si + sum - n * A[n-i]
-		for(int i = 1; i<n; i++)
 		{
-			s += sum - n * A[n-i];
-            maxSum = Math.max(maxSum, s);			
+			arrSum += A[i];
+			configSum += i*A[i];
 		}
 		
-		return maxSum;
+		maxConfigSum = configSum;
+		// Ci = Ci-1 + sum - n * A[n-i]
+		for(int i = 1; i<n; i++)
+		{
+			configSum = configSum + arrSum - n * A[n-i];
+            maxConfigSum = Math.max(maxConfigSum, configSum);			
+		}
+		
+		return maxConfigSum;
 	}
 	
 	public static void main(String [] args)

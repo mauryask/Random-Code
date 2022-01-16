@@ -128,6 +128,6 @@ public class MinimumPlatformsNeeded
 		int dep[] = {1000, 1200, 1240};
 		int n = arr.length;
 		
-		out.println(bestSolution(arr, dep, n));
+		out.println(minPlat2(arr, dep, n));
 	}
 }
