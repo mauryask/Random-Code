@@ -54,13 +54,13 @@ public class FindTheElementThatOcuursOnceInSortedArray
 	* If the mid = even : check mid+1 if same it 
 	* then it means that the rule ->
 	* (that first at even and second at odd is maintained)
-	* and the required element might be present in the right sub tree
-	* else in the left subtree
+	* and the required element might be present in the right subarray
+	* else in the left subarray
 	**************************************************	
 	* If mid = odd : Check mid - 1, then it means
 	* (that first at even and second at odd is maintained)
-	* and the required element might be present in the right sub tree
-	* else in the left sub tree
+	* and the required element might be present in the right subarray
+	* else in the left subarray
 	*/
 
      static int findEleBest(int A[], int n)
