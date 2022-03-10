@@ -101,20 +101,20 @@ public class MinimumPlatformsNeeded
 		// when train the train that will leave  
 		// the platform the platform is going to be empty
 		Arrays.sort(dep);
+				
+		int j = 0; // pointer to dept array
+	    int i = j+1; // pointer arr array
 		
-		int i = 0;
-		int j = i+1;
-	
-		while(j<n)
+		while(i<n)
 		{
-		   if(arr[j] > dep[i])
+		   if(arr[i] > dep[j])
 		   {
 			   i++;
 			   j++;
 		   }
 		   else
 		   {
-			   j++;
+			   i++;
 			   minPlat++;
 		   }
 		}
@@ -126,8 +126,7 @@ public class MinimumPlatformsNeeded
 	{
 		int arr[] = {900, 1100, 1235};
 		int dep[] = {1000, 1200, 1240};
-		int n = arr.length;
-		
-		out.println(minPlat2(arr, dep, n));
+		int n = arr.length;		
+		out.println(bestSolution(arr, dep, n));
 	}
 }
