@@ -1,5 +1,5 @@
 /*
-* T(n) : O(n*n) : in worst case all the cells will be visited
+* T(n) : O(n*n) : In worst case all the cells will be visited
 * S(n) : O(n*n)
 ** It is same as the 
 ** https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/
@@ -28,7 +28,7 @@ public class MinimumStesToReachSourecToTargetKnightTour
 	
 	static void minSteps(int n, int srcX, int srcY, int trgX, int targY)
 	{
-		Queue<KnightMove> q = new ArrayDeque<>();
+		Queue<KnightMove> q = new LinkedList<>();
 		q.add(new KnightMove(srcX,srcY,0));
 		boolean visited[][] = new boolean[n][n];
 		visited[srcX][srcY] = true;
