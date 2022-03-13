@@ -48,7 +48,7 @@ public class GasStationProblem
         // to jth petrol pump
         int petrolNeeded = 0;
         int n = dist.length;
-        int j = 0, i = 0;
+        int j = 0, startPoint = 0;
         
         while(j<n)
         {
@@ -72,7 +72,7 @@ public class GasStationProblem
                // start journey with new pump with empty tank like new start
                petrolInTank = 0;
                j++;
-               i = j;
+               startPoint = j;
            }
         }
         
@@ -81,15 +81,15 @@ public class GasStationProblem
         // to total extra petrol needed 
         // to reach from first pump to the last pump
         if(petrolInTank >= (-petrolNeeded))
-            return i;
+            return startPoint;
         // if circle can ot be completed at all 
         return -1;
     }
     
 	public static void main(String [] args)
 	{
-		int petrol[] = {2,3,4};
-		int dist[] = {3,4,3};
+		int petrol[] = {4,6,7,4};//{2,3,4};
+		int dist[] = {6,5,3,5};//{3,4,3};
 		out.println(betterMethod(petrol, dist));
 		//out.println(canCompleteCircuit(petrol, dist));
 	}

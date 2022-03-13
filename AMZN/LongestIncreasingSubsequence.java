@@ -19,7 +19,7 @@ public class LongestIncreasingSubsequence
 		
 		Arrays.fill(len, 1);
 		Arrays.fill(seq, -1);
-		int maxIndex = -1;
+		int maxIndex = 0;
 		// maxLen is always will be one
 		int maxLen = 1;
 		
@@ -27,13 +27,10 @@ public class LongestIncreasingSubsequence
 		{
 			for(int j=0; j<i; j++)
 			{
-				if(A[j] < A[i])
-				{
-					if(len[j]+1 >= len[i])
-					{
-				       len[i] = len[j] + 1;
-				       seq[i] = j;							
-					}			   
+				if(A[j] < A[i] && len[j]+1 >= len[i])
+				{				
+					   len[i] = len[j] + 1;
+				       seq[i] = j;					   
 				}
 			}
 			
@@ -43,7 +40,7 @@ public class LongestIncreasingSubsequence
 				maxIndex = i;
 			}
 		}
-		
+				
 		// printing max increasing subsequence length
 		out.println(maxLen);
 		// printing subsequence 
@@ -70,7 +67,7 @@ public class LongestIncreasingSubsequence
 	
 	public static void main(String [] args)
 	{
-		int A[] = {38,4,12,2,10,6,9,13,3,11,7,15};
+		int A[] = {10, 22, 9, 33, 21, 50, 41, 60};//{38,4,12,2,10,6,9,13,3,11,7,15};
 		int n = A.length;
 		LISS(A, n);
 	}

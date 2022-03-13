@@ -1,6 +1,13 @@
 import static java.lang.System.*;
 import java.util.*;
 
+/*
+* Here we are considering clock wise 
+*  rotation
+***
+* Even on anticlock wise rotation we are going to
+* get the same configurations
+*/
 public class MaxSumConfiguration
 {
 	static int maxSumConfig(int[] A,int n)
