@@ -7,20 +7,6 @@ import java.util.*;
 
 public class SortTheArrayAfterConvertingElementsToSquare
 {
-    static void bruteForce(int[] A, int n)
-    {
-        for(int i=0; i<n; i++)
-            A[i] = Math.abs(A[i]);
-        Arrays.sort(A);
-        int rslt[] = new int[n];
-        int i = 0;
-        for(int x: A)
-            rslt[i++] = x*x;
-        
-        for(int x: rslt)
-            out.print(x+" ");
-    }
-    
     static void sort(int[] A, int n)
     {
         int rslt[] =  new int[n];
@@ -29,7 +15,7 @@ public class SortTheArrayAfterConvertingElementsToSquare
         int right = n-1;
         int  k = n-1;
         
-        while(left < right)
+        while(left <= right)
         {
             int a = Math.abs(A[left]);
             int b = Math.abs(A[right]);
@@ -45,10 +31,7 @@ public class SortTheArrayAfterConvertingElementsToSquare
                 right--;
             }
         }
-        
-        if(left == right)
-            rslt[k] = A[left] * A[left];   
-
+                
         for(int x: rslt)
           out.print(x+" ");            
     }
@@ -58,7 +41,6 @@ public class SortTheArrayAfterConvertingElementsToSquare
        int A[] = {-6, -3, -1, 2, 4, 5};
        int n = A.length;
        
-       //sort(A, n);
-       bruteForce(A, n);
+       sort(A, n);
     }
 }
