@@ -1,15 +1,19 @@
 /*
-* T(n) : O(n*n)
+* T(n) : O(n * log n)
 * S(n) : O(n)
+*/
+/*
+* The idea is to keep number of elemnts  in maxHeap equal or 1 greater than the number of elemnts in minHeap 
+* i.e. num(maxHeap) = num(minHeap) or num(maxHeap) = num(minHeap) + 1
 */
 
 import static java.lang.System.*;
 import java.util.*;
 
-
 public class MedianOfRunningStream 
 {
 	static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+	
 	static PriorityQueue<Integer> minHeap = new PriorityQueue<>();
  	
 	static double findMedian()
