@@ -1,5 +1,4 @@
 /*
-* 
 ** Asked in amazon interview
 ** A rabbit starts from the first carrot
 ** eats all the consecutive carrots 

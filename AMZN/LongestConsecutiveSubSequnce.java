@@ -1,13 +1,15 @@
+/*
+* T(n) : O(n)
+* S(n) : O(n)
+*/
+	
 import static java.lang.System.*;
 import java.util.*;
 
 public class LongestConsecutiveSubSequnce 
-{
-	/*
-	* T(n) : O(n)
-	* S(n) : O(n)
-	*/
+{	
 	static int maxLength = 0;
+
 	static void getMaxLength(int[] A, int n)
 	{
 		Set<Integer> set = new HashSet<>();
