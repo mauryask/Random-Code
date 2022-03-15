@@ -1,5 +1,7 @@
-// https://www.geeksforgeeks.org/sort-linked-list-already-sorted-absolute-values/
-
+/*
+** T(n) : O(n)
+** S(n) : O(1) https://www.geeksforgeeks.org/sort-linked-list-already-sorted-absolute-values/
+*/
 import static java.lang.System.*;
 
 class Node
@@ -10,6 +12,7 @@ class Node
 	Node(int data)
 	{
 		this.data = data;
+		next = null;
 	}
 }
 
