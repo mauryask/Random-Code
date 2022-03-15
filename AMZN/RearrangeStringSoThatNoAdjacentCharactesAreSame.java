@@ -1,3 +1,9 @@
+/*
+* T(n) : O(n) 
+* S(n) : O(n)
+** As at any time map and list going to hold only 
+** 26 alphabates hance soting will take constant time
+*/
 import static java.lang.System.*;
 import java.util.*;
 
