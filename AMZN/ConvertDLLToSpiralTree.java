@@ -23,23 +23,15 @@ class Tree
 	
 	static Node getNode()
 	{
-		Node ptr = head;
+		if(head == null)
+			return null;
 		
-		// This condition prevents Null pointer
-		// Exception in case if there is 
-		// only opne node left
+		Node ptr = head.right;
+		Node temp = head;
+		head.right = null;
+		head = ptr;
 		
-		if(head != null && head.right != null)
-		{
-		    Node temp = head.right;
-			head.right = null;
-			temp.left = null;
-			head = temp;			
-		}
-		else
-			head = null;
-		
-		return  ptr;
+		return temp;
 	}
 		
 	static void createSpiralTree()

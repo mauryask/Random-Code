@@ -1,6 +1,6 @@
 /*
 * This is not the actual solution to this problem 
-* It shouild be solved using KMP algorithm
+* It should be solved using KMP algorithm
 * Time complexity is same for both : O(m*n)
 * but space complexity is better in KMP : O(1)
 */

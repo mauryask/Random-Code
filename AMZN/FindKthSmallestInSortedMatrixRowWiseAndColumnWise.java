@@ -12,7 +12,7 @@ public class FindKthSmallestInSortedMatrixRowWiseAndColumnWise
 		{
 			for(int y: x)
 				q.add(y);
-		}
+		}                                                                                   
 		
 		int count  = 0;
 		
