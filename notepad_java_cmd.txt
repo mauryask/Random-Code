@@ -1,0 +1,4 @@
+cd $(CURRENT_DIRECTORY)
+javac $(FILE_NAME)
+java $(NAME_PART)
+cmd /c del *.class;
