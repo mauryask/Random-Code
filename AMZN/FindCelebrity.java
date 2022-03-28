@@ -86,15 +86,20 @@ public class FindCelebrity
 		 }
 		 
 		 // we got the possible candidate 
-		 // of 
+		 // of being a celebrity 
 		 int celebId = stack.pop();
 		 
+		 // check if this candidate is known 
+		 // by everybody
 		 for(int i=0; i<n; i++)
 		 {
+			 // if now known by anyof theperson 
+			 // return -1
 			 if(i!=celebId && grid[i][celebId] !=1)
 				 return -1;
 		 }
 		 
+		 // return celebrity id
 		 return celebId;		 
 	 }
 	
