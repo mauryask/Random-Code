@@ -19,7 +19,7 @@ class Pair
 public class MakeRowAndColumnOne
 {
 	/*
-	* T(n) : O(m*n)
+	* T(n) : O(m^2*n^2)
 	* S(n) : O(m*n)
 	*/
 	static void solve(int[][] grid, int m, int n)
@@ -38,7 +38,13 @@ public class MakeRowAndColumnOne
 		
 		Set<Integer>  rowSet = new HashSet<>();
 		Set<Integer>  colSet = new HashSet<>();
-		
+		/*
+		* In worst case we might have to push all the 
+		* elements in the q (if all the elemnts in the grid
+		* are one) removing elements one by one and 
+		* visiting corresponding rows and columns
+		* might take O(m^2 * n^2) time complexity
+		*/
 		while(!q.isEmpty())
 		{
 			Pair p = q.poll();
@@ -49,16 +55,16 @@ public class MakeRowAndColumnOne
 			{
 				for(int i=0; i<n; i++)
 				   grid[x][i] = 1;
+			   	rowSet.add(x);
 			}
 			
 			if(!colSet.contains(y))
 			{
 				for(int i=0; i<m; i++)
 				    grid[i][y] = 1;
+			    colSet.add(y);			
 			}
 			
-			rowSet.add(x);
-			colSet.add(y);
 		}
 	}
 	
