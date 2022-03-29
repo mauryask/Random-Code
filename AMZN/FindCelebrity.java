@@ -1,5 +1,5 @@
 /*
-* Note here we are always going to have 
+** Here we are always going to have 
 ** exactly only one celebrity or not at all
 */
 import static java.lang.System.*;
