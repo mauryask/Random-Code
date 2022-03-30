@@ -5,7 +5,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class FindCelebrity
+public class CelebrityProblem
 {
 	/*
 	* T(n) : O(n*n)
