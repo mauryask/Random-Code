@@ -19,8 +19,8 @@ class Pair
 public class MakeRowAndColumnOne
 {
 	/*
-	* T(n) : O(m^2*n^2)
-	* S(n) : O(m*n)
+	* T(n) : O(m^2*n + m*n^2)
+	* S(n) : O(m*n) // elements in queue in worst case
 	*/
 	static void solve(int[][] grid, int m, int n)
 	{
@@ -41,9 +41,9 @@ public class MakeRowAndColumnOne
 		/*
 		* In worst case we might have to push all the 
 		* elements in the q (if all the elemnts in the grid
-		* are one) removing elements one by one and 
+		* are 1) removing elements one by one and 
 		* visiting corresponding rows and columns
-		* might take O(m^2 * n^2) time complexity
+		* might take O(m^2*n + m*n^2) time complexity
 		*/
 		while(!q.isEmpty())
 		{
@@ -154,22 +154,23 @@ public class MakeRowAndColumnOne
 		  // update first row
 		  if(rowFlag)
 		  {
-			  for(int i=0; i<m; i++)
-				  grid[i][0] = 1;
+			  for(int i=0; i<n; i++)
+				  grid[0][i] = 1;
 		  }
 		  // update first column
 		  if(colFlag)
 		  {
-			  for(int j=0; j<n; j++)
-				  grid[0][j] = 1;
+			  for(int j=0; j<m; j++)
+				  grid[j][0] = 1;
 		  }
   }
 	
   public static void main(String [] args)
   {
 	  int grid[][] = {{1, 0, 0, 1},
-                {0, 0, 1, 0},
-                {0, 0, 0, 0}};	  
+                      {0, 0, 1, 0},
+                000
+				{0, 0, 0, 0}};	  
 	  int m = grid.length;
 	  int n = grid[0].length;
 	  solve3(grid, m, n);

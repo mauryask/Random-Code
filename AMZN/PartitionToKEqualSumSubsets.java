@@ -37,7 +37,7 @@ public class PartitionToKEqualSumSubsets
 		  return isPossibleUtil(A, visited, 0, k-1, 
 	      0, targetSum, n);
 	  
-	    for(int i=0; i<n; i++)
+	    for(int i=start; i<n; i++)
 		{
 			if(visited[i])
 				continue;
@@ -57,7 +57,7 @@ public class PartitionToKEqualSumSubsets
 	{
 	    int A[] =  {4,3,2,3,5,2,1};
 		int n = A.length;
-		int k = 4;
+		int k = 4; 
 		out.println(isPossible(A, n, k));
 	}
 }
