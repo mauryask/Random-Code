@@ -12,9 +12,11 @@ import java.util.*;
 
 public class MedianOfRunningStream 
 {
-	static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+	static PriorityQueue<Integer> maxHeap = 
+	new PriorityQueue<>(Collections.reverseOrder());
 	
-	static PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+	static PriorityQueue<Integer> minHeap = 
+	new PriorityQueue<>();
  	
 	static double findMedian()
 	{

@@ -43,12 +43,17 @@ public class LongestIncreasingSubsequence
 				
 		// printing max increasing subsequence length
 		out.println(maxLen);
+		for(int x : seq)
+			out.print(x+" ");
+		out.println();
+		out.println(maxIndex+"\n");
 		// printing subsequence 
 		printSubsequence(A, maxIndex, seq);
 	}
 	
 	
-	static void printSubsequence(int[] A, int maxIndex, int [] seq)
+	static void printSubsequence(int[] A, int maxIndex, 
+	int [] seq)
 	{
 		int j = maxIndex;
 		Stack<Integer> stack = new Stack<>();

@@ -23,8 +23,7 @@ class Job
 }
 
 public class WeightedJobSceduling
-{
-	
+{	
 	static int findMaxProfit(List<Job> jobs)
 	{
 		Collections.sort(jobs, (a, b)-> (a.end-b.end));

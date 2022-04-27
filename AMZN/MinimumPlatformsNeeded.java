@@ -31,7 +31,7 @@ public class MinimumPlatformsNeeded
 			
 			for(int j=i+1; j<n; j++)
 			{
-				if((arr[j]<= dep[i] && dep[i] <= dep[j])
+				if((arr[j]<= arr[i] && arr[i] <= dep[j])
 					|| (arr[i] <= arr[j] && arr[j] <= dep[i]))
 					{
 						platform++;
@@ -127,6 +127,6 @@ public class MinimumPlatformsNeeded
 		int arr[] = {900, 1100, 1235};
 		int dep[] = {1000, 1200, 1240};
 		int n = arr.length;		
-		out.println(bestSolution(arr, dep, n));
+		out.println(minPlatforms(arr, dep, n));
 	}
 }

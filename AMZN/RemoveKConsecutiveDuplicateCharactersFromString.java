@@ -37,8 +37,7 @@ public class RemoveKConsecutiveDuplicateCharactersFromString
 			   p.freq += 1;
 			   
 			   if(p.freq != k)
-				   stack.push(p);
-				   
+				   stack.push(p);				   
 		   }
            else		   
 			  stack.push(new Pair(str.charAt(i), 1));
