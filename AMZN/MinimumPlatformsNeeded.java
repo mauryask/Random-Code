@@ -1,18 +1,6 @@
 import static java.lang.System.*;
 import java.util.*;
 
-class Platform 
-{
-	int arrival;
-	int departure;
-	
-	Platform(int arrival, int departure)
-	{
-		this.arrival = arrival;
-		this.departure = departure;
-	}
-}
-
 public class MinimumPlatformsNeeded 
 {
 	/*
@@ -29,16 +17,17 @@ public class MinimumPlatformsNeeded
 		{
 			platform = 1;
 			
-			for(int j=i+1; j<n; j++)
+			for(int j=0; j<n; j++)
 			{
-				if((arr[j]<= arr[i] && arr[i] <= dep[j])
+				if(i==j && (arr[j]<= arr[i] && arr[i] <= dep[j])
 					|| (arr[i] <= arr[j] && arr[j] <= dep[i]))
-					{
 						platform++;
-					}
 			}
-		  minPlat = Math.max(minPlat, platform);
+				
 		}
+		
+		minPlat = Math.max(minPlat, platform);
+    }
 		
 		return minPlat;
 	}
@@ -49,38 +38,46 @@ public class MinimumPlatformsNeeded
 	* S(n) : O(n)
 	*/
 
-    static int minPlat2(int[] arr, int[] dep,int n)
+    static class Time  
 	{
-		Queue<Integer> q = new PriorityQueue<>(
-		(a, b)->{
-			return a - b;
-		});
+		int arr;
+		int dep;
 		
-		List<Platform> list = new ArrayList<>();
-		for(int i=0; i<n; i++)
-			list.add(new Platform(arr[i], dep[i]));
-		
-		Collections.sort(list, (a, b)->{
-			return a.arrival - b.arrival;
-		});
-				
-		int platform = 1;
-			
-	    q.add(list.get(0).departure);
-		
-		for(int j=1; j<n; j++)
+		Time(int arr, int dep)
 		{
-		   if(list.get(j).arrival > q.peek())
-			   q.remove();
-		   else
-			   platform++;
-		   
-		   q.add(list.get(j).departure);
+			this.arr = arr;
+			this.dep = dep;
 		}
-		
-		return platform;
 	}
-	
+
+    private static int minPlat2(int a[], int d[], int n)
+	{
+		Queue<Integer> q = new PriorityQueue<>();//By deafult is Min-Heap
+		Time t[] = new Time[n];
+		
+		for(int i=0; i<n; i++)
+			t[i] = new Time(a[i], d[i]);
+		
+		Arrays.sort(t, (x, y)->{
+			return x.arr - y.arr;
+		});
+		
+		q.add(t[0].dep);
+		
+		int minPlatform = 1;
+		
+		for(int i=1; i<n; i++)
+		{
+			if(t[i].arr <= q.peek())
+				minPlatform++;
+			else 
+			  q.poll();
+			
+			q.add(t[i].dep);
+		}			
+		
+		return minPlatform;
+	}	
 	
 	/*
 	* Best solution
@@ -103,7 +100,7 @@ public class MinimumPlatformsNeeded
 		Arrays.sort(dep);
 				
 		int j = 0; // pointer to dept array
-	    int i = j+1; // pointer arr array
+	    int i = 1; // pointer arr array
 		
 		while(i<n)
 		{
