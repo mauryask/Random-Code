@@ -50,3 +50,66 @@ public class MedianOfRunningStream
 	  out.println(findMedian());
 	}
 }
+
+
+
+//O(n^2) code using binary search no the tp of the insertion sorting
+/*
+
+    static int  getPosition(List<Integer> list, int target)
+	{
+		int start = 0;
+		int end = list.size() - 1;
+		
+		while(start <= end)
+		{
+			int mid = start + (end - start) / 2;
+			
+			if(list.get(mid) == target)
+				return mid;
+			else if(list.get(mid) > target)
+				end = mid - 1;
+			else 
+				start = mid + 1;
+		}
+		
+		return start;
+	}
+	
+	static double findMedian(List<Integer> list)
+	{
+		int n = list.size();		
+		if(n % 2 == 0)
+			return (list.get(n/2-1) + list.get(n/2)) / 2.0;
+		return list.get(n/2);
+	}
+    
+   public static void main(String [] args)
+   {
+       List<Integer> list = new ArrayList<>();
+	   
+	   while(true)
+	   {
+		    int nextEle = new Scanner(in).nextInt();
+		   
+		    if(nextEle == -1)
+			   break;
+		   
+		    if(nextEle == 0)
+			{
+				out.println("Median: "+findMedian(list));
+				continue;
+			}
+		   
+		    int position = getPosition(list, nextEle);
+	   
+	        out.println("Before: "+list);
+	   
+	        out.println("Position: "+position);
+	        
+			list.add(position, nextEle);
+	   
+	        out.println("After: "+list);
+	   }   
+   }
+*/

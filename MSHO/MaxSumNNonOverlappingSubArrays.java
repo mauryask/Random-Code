@@ -32,6 +32,7 @@ public class MaxSumNNonOverlappingSubArrays
         }
         
         q.add(sum);
+		
         if(q.size() > m)
             q.remove();
         
@@ -42,7 +43,7 @@ public class MaxSumNNonOverlappingSubArrays
        
        return maxSum;
     }
-    
+    	
    public static void main(String [] args)
    {
        int A[] = {3, 2, 100, 1};
