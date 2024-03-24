@@ -63,11 +63,11 @@ public class CelebrityProblem
 	 static int findCeleb2(int[][] grid, int n)
 	 {
 		 Stack<Integer> stack = new Stack<>();
-		 // push all the candate Ids in the stack
+		 // push all the candidate Ids in the stack
 		 for(int i=0; i<n; i++)
 			 stack.push(i);
 		 
-		 while(stack.size() >= 2)
+		 while(stack.size() > 1)
 		 {
 			 int a = stack.pop();
 			 int b = stack.pop();
@@ -93,7 +93,7 @@ public class CelebrityProblem
 		 {
 			 // if now known by anyof theperson 
 			 // return -1
-			 if(i!=celebId && grid[i][celebId] !=1)
+			 if(i!=celebId && (grid[i][celebId] != 1 || grid[celbId][i] == 1))
 				 return -1;
 		 }
 		 

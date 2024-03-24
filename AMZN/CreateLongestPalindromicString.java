@@ -22,7 +22,7 @@ public class CreateLongestPalindromicString
 		}
 		
 		// mid character in the palindromic string
-		char midChar = '.';
+		char midChar = '0';
 		// size of palindromic string
 		int size = 0;
 		
@@ -36,7 +36,7 @@ public class CreateLongestPalindromicString
             * taking only pair of the characters and ignoring the rest			
 			*/ 
 			// number of pairs * 2 
-			// gives the copy of the character tyhat will be present
+			// gives the copy of the character that will be present
 			// in the palindromic string
 			int freq = (val/2)*2; 
 			int rem = val % 2;
@@ -49,7 +49,7 @@ public class CreateLongestPalindromicString
 			map.replace(key, freq);			
 		}
 		
-		if(midChar != '.')
+		if(midChar != '0')
 			size += 1;
 		
 		char arr[] = new char[size];
