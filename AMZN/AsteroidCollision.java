@@ -11,9 +11,7 @@ public class AsteroidCollision
 	   for(int x : A)
 		   list.add(x);
 	   
-	   int listSize = list.size();
-	   
-	   int p1 = listSize-1;
+	   int p1 = list.size()-1;
 	   int p2 = p1-1;
 	   
 	   while(p2 >= 0)
@@ -31,25 +29,18 @@ public class AsteroidCollision
 			   {
 				   list.remove(p1);
 				   list.remove(p2);
-				   listSize -= 2;
 			   }
 			   /*
 			   * One with smaller size will explode
 			   */
 			   else if(list.get(p2) > Math.abs(list.get(p1)))
-			   {
 				    list.remove(p1);
-					listSize -= 1;
-			   }
 			   else
-			   {
 				   list.remove(p2);
-				   listSize -= 1;
-			   }
 			   /*
 			   * Update pointers point to last to elements only
 			   */
-			   p1 = listSize-1;
+			   p1 = list.size()-1;
 		       p2 = p1-1;
 		   }
 		   else

@@ -12,63 +12,47 @@ public class CelebrityProblem
 	* S(n) : O(1)
 	*/
 	
-	static int findCeleb(int[][] grid,int n)
+	static int getCeleb(int[][] grid, int n)
 	{
-		// Id of the possible candidate
-		// of being a celebrity
-		int celebId = -1;
-		// this variable determines whether a person 
-		// is possible candidate to be a celebrity or not
-		boolean isPossibleCeleb = true;
+		int candidateId = -1;
 		
-		// find the possible candidate 
-		// which does not know any one
+		//Finding possible candidate to be celebrity
+		//Check if the candidate does not know any one
 		for(int i=0; i<n; i++)
 		{
-			// initially assume that every candidate is 
-			// a possible celebrity
-			isPossibleCeleb = true;
+			boolean flag = true;
 			
 			for(int j=0; j<n; j++)
 			{
-				// if for the current candidate  
-				// if any of the value is 1 
-				// then it means it knows someone 
-				// and can not be possible candidate 
-				// to be a celebrirty
-				if(i!=j && grid[i][j]== 1)
+				if(grid[i][j] == 1)
 				{
-					isPossibleCeleb = false;
+					flag = false;
 					break;
 				}
 			}
 			
-			// if a possible candidate is found
-			// set the celebrity Id and break
-			if(isPossibleCeleb)
+			//If does not know any one 
+			//Possible candidate found
+			if(flag)
 			{
-				celebId = i;
+				candidateId = i;
 				break;
 			}
 		}
 		
-		// if possible candidate is found 
-        // check if this candidate is known to everyone		
-		if(isPossibleCeleb)
+		if(candidateId == -1)
+			return -1;
+		
+		//Check if this candidate is known to every one
+		for(int i=0; i<n; i++)
 		{
-			for(int i=0; i<n; i++)
-			{
-				// if not known by any of the 
-				// person in the meeting  except himself
-				// he is out of the race to be a celebrity
-				// return -1
-				if(i!=celebId && grid[i][celebId] !=1)
-					return -1;
-			}
+			if(candidateId == i)
+				continue;			
+			if(grid[i][candidateId] != 1)
+				return -1;
 		}
 		
-		// else return celebId
-		return celebId;
+		return candidateId;
 	}
 	
 	/*
