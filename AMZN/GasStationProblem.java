@@ -44,7 +44,7 @@ public class GasStationProblem
     {
         // petrol in the tank currently
         int petrolInTank = 0;
-        // extra etrol needed to reach from starting 
+        // extra petrol needed to reach from starting 
         // to jth petrol pump
         int petrolNeeded = 0;
         int n = dist.length;

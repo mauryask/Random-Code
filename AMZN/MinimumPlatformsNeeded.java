@@ -10,7 +10,7 @@ public class MinimumPlatformsNeeded
 	**/
 	static int minPlatforms(int[] arr, int[] dep, int n)
 	{
-		int minPlat = 0;
+		int minPlat = 1;
 		int platform = 0;
 		
 		for(int i=0; i<n; i++)
@@ -18,16 +18,13 @@ public class MinimumPlatformsNeeded
 			platform = 1;
 			
 			for(int j=0; j<n; j++)
-			{
-				if(i==j && (arr[j]<= arr[i] && arr[i] <= dep[j])
-					|| (arr[i] <= arr[j] && arr[j] <= dep[i]))
+			{			
+				if (i!=j && arr[i] >= arr[j] && dep[j] >= arr[i])
 						platform++;
 			}
 				
-		}
-		
-		minPlat = Math.max(minPlat, platform);
-    }
+			minPlat = Math.max(minPlat, platform);					
+		}		
 		
 		return minPlat;
 	}

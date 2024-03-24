@@ -89,11 +89,10 @@ public class AsteroidCollision
 		   if(!stack.isEmpty() && 
 		   stack.peek() > 0 && A[i] < 0)
 		   {
-			   int x = A[i];
-			   boolean isEqual = false;
-			   
+			   int activeAsteroid = A[i];
+
 			   while(!stack.isEmpty() && 
-			   stack.peek() > 0 && x < 0)
+			   stack.peek() > 0 && activeAsteroid < 0)
 			   {
 				   /*
 				   * Even after removing top of stack
@@ -102,19 +101,19 @@ public class AsteroidCollision
 				   ****
 				   * top of stack reprseents the current asteroid
 				   */
-				   int y = stack.pop();
+				   int currentAsteroid = stack.pop();
 				  
-				   if((-x) == y)
+				   if((-activeAsteroid) == currentAsteroid)
 				   {
-					   isEqual =  true;
+					   activeAsteroid = 0;
 					   break;
 				   }
 				   /*
 				   * The one which is smaller will explode
 				   * x is the asteroid that will persist
 				   */
-				   else if((-x) < y)
-					   x = y;
+				   else if((-activeAsteroid) < currentAsteroid)
+					   activeAsteroid = currentAsteroid;
 			   }
 			   
 			   /*
@@ -122,8 +121,8 @@ public class AsteroidCollision
 			   * then both will explode no need to keep it
 			   * in the stack
 			   */
-			   if(!isEqual)
-			      stack.push(x);
+			   if(activeAsteroid != 0)
+			      stack.push(activeAsteroid);
 		   }
 		   /*
 		   * If collision condition is not satishfied
