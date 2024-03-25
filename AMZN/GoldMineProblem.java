@@ -8,10 +8,7 @@ public class GoldMineProblem
 {
 
 	/*
-	* T(n) : Kind of cubic : (m*m*n) : not sure
-	* S(n) : O(1) : if recursion stack is not considered
-	* since there are lot of overlapping sub problems
-	* we can go with dp;
+	* T(n) : Kind of cubic : (3^m*n) : not sure
 	*/
 
 	static int bruteForce(int[][] A, int m, int n)
@@ -68,6 +65,44 @@ public class GoldMineProblem
 	static boolean isSafe(int i, int j, int m, int n)
 	{
 		return i>=0 && j>=0 && i<m && j<n; 
+	}
+	
+	//**********************
+	
+	//Bootom up O(m*n) Best approach
+	static int getValue(int i, int j, int m, int n, int[][] dp)
+	{
+		if(i<m && i>=0 && j<n && j>=0)
+			return dp[i][j];
+		return Integer.MIN_VALUE;
+	}
+	
+	static int getMaxGold(int[][] grid)
+	{
+		int m = grid.length;
+		int n = grid[0].length;
+		
+		int dp[][] = new int[m+1][n+1];
+		
+		for(int i=0; i<m; i++)
+		   dp[i][n-1] = grid[i][n-1];
+	   
+	    for(int j=n-2; j>=0; j--)
+		{
+			for(int i=m-1; i>=0; i--)
+			{
+				int right = getValue(i, j+1, m, n, dp);
+				int topRight = getValue(i-1, j+1, m, n, dp);
+				int bottomRight = getValue(i+1, j+1, m, n, dp);
+				dp[i][j] = Math.max(right, Math.max(topRight, bottomRight)) + grid[i][j];
+			}
+		}
+		
+	    int maxGold = 0;
+		
+		for(int i=0; i<m; i++)
+			maxGold = Math.max(maxGold, dp[i][0]);
+		return maxGold;
 	}
 	
 	public static void main(String [] args)
