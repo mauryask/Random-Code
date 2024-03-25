@@ -26,17 +26,39 @@ public class FindKthSmallestInSortedMatrixRowWiseAndColumnWise
 	}
 	
 	// by mering the arrays
-	static void method2(int[][] A, int n , int k)
+	static void getKthMin(int[][] grid, int k)
 	{
-		int temp[] = new int[n];
-		int mergedArray[] = new int[n*n];
+		List<Integer> result = new ArrayList<>();
 		
-		for(int i=0; i<n; i++)
+		for(int i=0; i<grid.length; i++)
 		{
-			temp = merge(temp, A[i]);
+			List<Integer> list = new ArrayList<>();
+			int[] A = grid[i];
+			
+			int j = 0;
+			int l = 0;
+			int n1 = result.size();
+			int n2 = A.length;
+			
+			while(j<n1 && l<n2)
+			{
+				if(result.get(j) < A[l])
+					list.add(result.get(j++));
+				else
+					list.add(A[l++]);
+			}
+			
+			while(j<n1)
+				list.add(result.get(j++));
+			while(l<n2)
+				list.add(A[l++]);
+			
+			result = list;
 		}
+		
+		out.println(result.get(k-1));
 	}
-	
+		
 	public static void main(String [] args)
 	{
 		int[][] A = {
