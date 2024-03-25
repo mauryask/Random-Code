@@ -77,7 +77,7 @@ public class FindTheElementThatOcuursOnceInSortedArray
 			 
 			 if(mid % 2 == 0)
 			 {
-				 if(A[mid] == A[mid+1])
+				 if(mid+1 < n && A[mid] == A[mid+1])
 					 start = mid + 2;
 				 else
 					 end = mid;
@@ -85,7 +85,7 @@ public class FindTheElementThatOcuursOnceInSortedArray
 			 else if(mid % 2 != 0)
 			 {
 				 
-					 if(A[mid] == A[mid-1])
+					 if(mid-1 >= 0 && A[mid] == A[mid-1])
 						 start = mid + 1; //subtract 1; from above logic
 					 else
 						 end = mid-1; // subtract 1; from above logic
