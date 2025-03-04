@@ -72,7 +72,7 @@ public class LongestConsecutiveSubSequnce
 			
 			maxLen = Math.max(maxLen, count);
 		}
-		
+		 
 	    return maxLen;
 	}
 	
