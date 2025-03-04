@@ -12,9 +12,12 @@ import java.util.*;
 
 public class MedianOfRunningStream 
 {
+	// This queue contains the elements of smaller (left) half (in the sorted array)
+	// Hence largest element of smaller half will be at the top of it
 	static PriorityQueue<Integer> maxHeap = 
 	new PriorityQueue<>(Collections.reverseOrder());
-	
+	// This queue contains the elements of larger (right) half (in the sorted array)
+	// Hence smallest element of larger half will be at the top of it
 	static PriorityQueue<Integer> minHeap = 
 	new PriorityQueue<>();
  	

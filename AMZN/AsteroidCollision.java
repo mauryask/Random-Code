@@ -63,68 +63,51 @@ public class AsteroidCollision
    * S(n) : O(n)
    */
    
-   static void asteroidCollision(int A[], int n)
-   {
-	   // It stores asteroids to the left
+    static int[] asteroidCollision(int[] A) {
 	   Stack<Integer> stack = new Stack<>();
-	   
-	   stack.push(A[0]);
-	   
-	   for(int i=1; i<n; i++)
-	   {
-		   /*
-		   * The asteroid wil collide if and only 
-		   * if stack(top) > 0 and A[i] < 0
-		   * i.e. they are moving in opposite direction
-		   */
-		   if(!stack.isEmpty() && 
-		   stack.peek() > 0 && A[i] < 0)
-		   {
-			   int activeAsteroid = A[i];
 
-			   while(!stack.isEmpty() && 
-			   stack.peek() > 0 && activeAsteroid < 0)
+	   for(int i=0; i<A.length; i++)
+	   {
+		   // This is the only case of collision
+		   if(!stack.isEmpty() && stack.peek() > 0 && A[i] < 0)
+		   {
+			   // Get absolute value of the weight of asteroid	
+               int activeAst = A[i] * -1;
+			   // This variable tracks if the asteroid is still active
+               boolean isActive = true;
+               
+			   // Run this loop until an asterloid encountered moving in the same direction i.e. -ve
+               while(!stack.isEmpty() && stack.peek() > 0)
 			   {
-				   /*
-				   * Even after removing top of stack
-				   * there might be chances of collision
-				   * so update x until the condition holds
-				   ****
-				   * top of stack reprseents the current asteroid
-				   */
-				   int currentAsteroid = stack.pop();
-				  
-				   if((-activeAsteroid) == currentAsteroid)
-				   {
-					   activeAsteroid = 0;
-					   break;
-				   }
-				   /*
-				   * The one which is smaller will explode
-				   * x is the asteroid that will persist
-				   */
-				   else if((-activeAsteroid) < currentAsteroid)
-					   activeAsteroid = currentAsteroid;
+				  // 3 case
+                  if(activeAst < stack.peek())
+                  {
+                      isActive = false;
+                      break;
+                  }
+                  else if(activeAst > stack.peek())
+                     stack.pop();
+                  else if(activeAst == stack.peek()){
+                    isActive = false;
+                    stack.pop();
+                    break;
+                  }     
 			   }
-			   
-			   /*
-			   * if both asteroids are of eqaul size
-			   * then both will explode no need to keep it
-			   * in the stack
-			   */
-			   if(activeAsteroid != 0)
-			      stack.push(activeAsteroid);
+               // If asteroid still active push it in the stack
+               if(isActive) stack.push(A[i]);
 		   }
-		   /*
-		   * If collision condition is not satishfied
-		   * push the element in the stack
-		   */
 		   else 
 		     stack.push(A[i]);
 	   }
-	   
-	   out.print(stack);
-   }
+        
+        // Convert the stack to an array.
+        int[] result = new int[stack.size()];
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            result[i] = stack.pop();
+        }
+        
+        return result;
+    }
 
 	public static void main(String [] srga)
 	{
