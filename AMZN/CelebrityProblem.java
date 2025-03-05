@@ -20,20 +20,20 @@ public class CelebrityProblem
 		//Check if the candidate does not know any one
 		for(int i=0; i<n; i++)
 		{
-			boolean flag = true;
+			boolean isFound = true;
 			
 			for(int j=0; j<n; j++)
 			{
-				if(grid[i][j] == 1)
+				if(i != j && grid[i][j] == 1)
 				{
-					flag = false;
+					isFound = false;
 					break;
 				}
 			}
 			
 			//If does not know any one 
 			//Possible candidate found
-			if(flag)
+			if(isFound)
 			{
 				candidateId = i;
 				break;
@@ -46,9 +46,7 @@ public class CelebrityProblem
 		//Check if this candidate is known to every one
 		for(int i=0; i<n; i++)
 		{
-			if(candidateId == i)
-				continue;			
-			if(grid[i][candidateId] != 1)
+			if(i != candidateId && grid[i][candidateId] != 1)
 				return -1;
 		}
 		
@@ -63,6 +61,7 @@ public class CelebrityProblem
 	 static int findCeleb2(int[][] grid, int n)
 	 {
 		 Stack<Integer> stack = new Stack<>();
+		 int celbId = -1;
 		 // push all the candidate Ids in the stack
 		 for(int i=0; i<n; i++)
 			 stack.push(i);
