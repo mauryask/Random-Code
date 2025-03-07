@@ -1,6 +1,9 @@
 import static java.lang.System.*;
 import java.util.*;
 
+// Note: Condition for two intervals (a, b) and (c, d) to overlap
+// max(a, c) <= min(b, d)
+
 public class MinimumPlatformsNeeded 
 {
 	/*
@@ -11,16 +14,15 @@ public class MinimumPlatformsNeeded
 	static int minPlatforms(int[] arr, int[] dep, int n)
 	{
 		int minPlat = 1;
-		int platform = 0;
-		
+				
 		for(int i=0; i<n; i++)
 		{
-			platform = 1;
+			int platform = 1;
 			
 			for(int j=0; j<n; j++)
 			{			
-				if (i!=j && arr[i] >= arr[j] && dep[j] >= arr[i])
-						platform++;
+				if (i!=j && Math.max(arr[i], arr[j]) <= Math.min(dep[i], dep[j]))
+					platform++;
 			}
 				
 			minPlat = Math.max(minPlat, platform);					
@@ -118,8 +120,8 @@ public class MinimumPlatformsNeeded
 	
 	public static void main(String [] args)
 	{
-		int arr[] = {900, 1100, 1235};
-		int dep[] = {1000, 1200, 1240};
+		int arr[] = {900, 940, 950, 1100, 1500, 1800};
+		int dep[] = {910, 1200, 1120, 1130, 1900, 2000};
 		int n = arr.length;		
 		out.println(minPlatforms(arr, dep, n));
 	}
