@@ -9,6 +9,41 @@ import java.util.*;
 
 public class PrintTheElementsOfSortedMatrixRowAndColumnWise 
 {
+	// Priority queue based solution
+	// T(n) : O(N^2 log N)
+	// S(n) : O(N)
+	// https://www.geeksforgeeks.org/problems/sorted-matrix2333/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+    
+	static int[][] sortedMatrix(int n, int mat[][]) 
+	{
+       Queue<int[]> q = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+       int sol[][] = new  int[n][n];
+       
+       for(int i=0; i<n; i++){
+           q.add(new int[]{mat[i][0], i, 0});
+       }
+       
+       int ni = 0, nj = 0;
+       
+       while(!q.isEmpty()){
+           int[] ele = q.poll();
+           
+           sol[ni][nj] = ele[0];
+           
+           if(ele[2] + 1 < n)
+              q.add(new int[]{mat[ele[1]][ele[2] + 1], ele[1], ele[2] + 1});
+           
+           if(nj == n-1){
+               ni = ni + 1;
+               nj = 0;
+           }else{
+               nj = nj+1;
+           }
+       }
+       
+       return sol;
+    }
+
 	static void printEle(int[][] A, int m,int n)
 	{
 		List<Integer> rslt = new ArrayList<>();
