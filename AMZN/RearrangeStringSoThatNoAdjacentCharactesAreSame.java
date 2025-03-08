@@ -1,8 +1,6 @@
 /*
-* T(n) : O(n) 
-* S(n) : O(1)
-** As at any time map and list going to hold only 
-** 26 alphabates hance soting will take constant time
+* T(n) : O(n) : Since we are sorting only 26 characters
+* S(n) : O(n) : charArr[] array going to take n space
 */
 import static java.lang.System.*;
 import java.util.*;
