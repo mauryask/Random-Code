@@ -1,6 +1,6 @@
 /*
 * T(n) : O(n) 
-* S(n) : O(n)
+* S(n) : O(1)
 ** As at any time map and list going to hold only 
 ** 26 alphabates hance soting will take constant time
 */
@@ -9,76 +9,68 @@ import java.util.*;
 
 public class RearrangeStringSoThatNoAdjacentCharactesAreSame
 {	
-   static String changeString(String str, int n)
-   {
-	   // convert the string into character array
-	   char ch[] = str.toCharArray();
-	   
-	   // map to store charcater frequency
-	   Map<Character, Integer> map = new HashMap<>();
-	   
-	   // list to maintain order of chacater
-	   // in descending order of frequency
-	   List<Character> list =  new LinkedList<>();
-	   int maxFreq = 0;
-	   
-	   // populating the map
-	   for(char c : ch)
-	   {
-		   if(map.containsKey(c))
-			   map.replace(c, map.get(c)+1);
-		   else
-		   {
-			   map.put(c,1);
-			   list.add(c);
-		   }
-		  maxFreq = Math.max(maxFreq, map.get(c));
-	   }
-	   
-	   // Check if such string possibles
-	   // see notes
-	   if(!((n+1)/2 >= maxFreq))
-		   return "No!!";
+    static void fillCharArr(List<Character> list, Map<Character, Integer> map, char[] charArr, int index){
+        int n = charArr.length;
 
-	   
-	   // Sort the list acording to character
-	   // frequency in descending order
-	   Collections.sort(list, (a, b)->{
-		   return map.get(b) - map.get(a);
-	   });
-	   
-	   // first fill the even positions
-	   for(int i = 0; i<n; i+=2)
-	      fillPosion(ch, i, map, list);
-
-	   // then fill the odd positions
-	   for(int i=1; i<n; i+=2)
-	      fillPosion(ch, i, map, list);
-	   
-	   // return the final result
-	   return String.valueOf(ch);
-   }
-   
-   // helper function to fill the char array
-   static void fillPosion(char ch[], int i, Map<Character, Integer> map, List<Character> list)
-   {
-	      char c = list.get(0);
-         
-		  map.replace(c, map.get(c)-1);	
-         
-		  if(map.get(c) == 0)
-		  {
-			 map.remove(c);
-			 list.remove(0);
-		  }
-		 
-		  ch[i] = c;
-   }
+        for(int i = index; i < n; i+=2){
+            char ch = list.get(0);
+            charArr[i] = ch;
+            map.put(ch, map.get(ch)-1);            
+            if(map.get(ch) == 0){
+               list.remove(0);              
+            }
+        }
+    }
+    
+    static String rearrangeString(String s) {
+        int n = s.length();
+        
+        if(n <= 1)
+           return s;
+           
+        int maxFreq = 0;
+        // int evenIndexCount = 0;
+                   
+        Map<Character, Integer> map = new HashMap<>();
+        List<Character> list = new LinkedList<>();
+		        
+        for(int i=0; i<n; i++){
+			// Instead of below operation we can directly get the even index count as
+			// (n+1)/2
+            // if(i % 2 == 0)
+            //   evenIndexCount++;
+              
+            char ch = s.charAt(i);
+            
+            if(map.containsKey(ch)){
+                map.replace(ch, map.get(ch)+1);
+            }else{
+                map.put(ch, 1);
+                list.add(ch);
+            }
+            
+            maxFreq = Math.max(maxFreq, map.get(ch));
+        }   
+        
+	   // If max freqeuncy is greater than the even index count
+	   // It is not possible to rearrange the charcaters of given string 
+	   // as per given rules	
+       if(maxFreq > (n+1)/2)
+		   return "";
+        
+        Collections.sort(list, (a, b) -> map.get(b) - map.get(a));
+        
+        
+        char[] charArr = s.toCharArray();
+        fillCharArr(list, map, charArr, 0);
+        fillCharArr(list, map, charArr, 1);
+        
+        return String.valueOf(charArr);
+    }
 
    public static void main(String [] args)
    {
 	   String str = "baaba";
-	   int n = str.length();
-	   out.println(changeString(str, n));
+	   out.println(rearrangeString(str));
    }
 }
