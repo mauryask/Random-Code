@@ -1,63 +1,68 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class RearrangeArrayInAlternativeMaxAndMin 
-{
-	/*
+public class RearrangeArrayInAlternativeMaxAndMin {
+    /*
 	* T(n) : O(n) 
 	* S(n) : O(n)
-	*/
-	static void reArrange(int[] A, int n)
-	{
-		int sol[] = new int[n];
-		int left = 0;
-		int right = n-1;
-		int k  =0;
-		
-		while(left < right)
-		{
-			sol[k++] = A[right];
-			sol[k++] = A[left];
-			left++;
-			right--;
-		}
-		
-		if(left == right)
-			sol[k] = A[left];
-		
-		for(int x : sol)
-			out.print(x+" ");
-	}
-	
-	/*
+     */
+    static void rearrange(int arr[]) {
+        int n = arr.length;
+
+        if (n <= 1) {
+            return;
+        }
+
+        int res[] = new int[n];
+        int start = 0, end = n - 1;
+        int index = 0;
+
+        Arrays.sort(arr);
+
+        while (start <= end) {
+            res[index] = arr[end];
+            if (index + 1 < n) {
+                res[index + 1] = arr[start];
+            }
+
+            start++;
+            end--;
+            index += 2;
+        }
+        // Update the original array values
+        for (int i = 0; i < n; i++) {
+            arr[i] = res[i];
+        }
+    }
+
+    /*
 	* T(n) : O(n*n)
 	* S(n) : O(1)
-	*/	
-	static void sol2(int[] A, int n)
-	{
-		int i = 0;
-		
-		while(i<n)
-		{
-			int temp  = A[n-1];
-			
-			for(int j=n-1; j>i; j--)
-				A[j] = A[j-1];
-			
-			A[i] = temp;
-			i += 2;
+     */
+    static void sol2(int[] A, int n) {		
+		if(n<=1)
+		  return;
+	  
+		for(int i=0; i<n; i+=2){			 
+			 int j = n-1;
+			 int temp = A[j];
+		     for(; j>i; j--){
+				A[j] = A[j-1]; 
+			 }
+			 
+            A[j] = temp;
 		}
-		
-		for(int x : A)
-			out.print(x+" ");
-	}
-	
-	public static void main(String [] args)
-	{
-		int A[]  = {1,2,3,4,5,6,7,8};
-		int n = A.length;
-		
-		//reArrange(A, n);
-		sol2(A, n);
-	}
+
+        for (int x : A) {
+            out.print(x + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        int A[] = {1, 2, 3, 4, 5, 6, 7, 8};
+        int n = A.length;
+
+        //reArrange(A, n);
+        sol2(A, n);
+    }
 }
