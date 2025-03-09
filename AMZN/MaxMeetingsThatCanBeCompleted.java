@@ -1,64 +1,53 @@
+
 import static java.lang.System.*;
 import java.util.*;
 
 /*
 * T(n) : O(n*logn)
 * S(n) : O(n)
-*/
+** Same as activity selection problem
+ */
+public class MaxMeetingsThatCanBeCompleted {
 
-class Meeting 
-{
-	int start;
-	int end;
-	int index;
-	
-	Meeting(int start,int end,int index)
-	{
-	   this.start = start;
-	   this.end = end;	   
-	   this.index = index;
-	}
-}
+    static ArrayList<Integer> maxMeetings(int[] S, int[] F) {
+        int n = S.length;
+        int[][] meetings = new int[n][3];
 
-public class MaxMeetingsThatCanBeCompleted 
-{
-	static int maxMeets(int st[], int et[], int n)
-	{
-		List<Meeting> list = new ArrayList<>(); 
-		
-		for(int i= 0; i<n; i++)
-			list.add(new Meeting(st[i], et[i], i));
-		
-		Collections.sort(list, (a, b) -> (a.end - b.end));
-	        
-		List<Meeting> result = new ArrayList<>();
-		
-		result.add(list.get(0));
-		
-		int lastMeetEnd = list.get(0).end;
-				
-		for(int i=1; i<n; i++)
-		{
-			if(list.get(i).start > lastMeetEnd)
-			{
-				result.add(list.get(i));
-				lastMeetEnd = list.get(i).end;
-			}
-		}
-		
-		for(Meeting m : result)
-			out.println(m.start+"., "+m.end);
+        for (int i = 0; i < n; i++) {
+            meetings[i][0] = S[i];  // Start time
+            meetings[i][1] = F[i];  // End time
+            meetings[i][2] = i + 1; // Meeting number
+        }
 
-		// total meets that can be completed 
-		// is the size of the result list
-		return result.size();
-	}
-	
-	public static void main(String [] args)
-	{
-		int[] st = {1, 3, 0, 5, 8, 5}; // start time 
-		int[] et = {2, 4, 6, 7, 9, 9}; // end time 
-		int n = st.length;
-		out.println(maxMeets(st, et, n));
-	}
+        // Sort based on the end time of the meetings
+        Arrays.sort(meetings, (a, b) -> a[1] - b[1]);
+        // Store the result in the below list
+        ArrayList<Integer> maxMeets = new ArrayList<>();
+
+        //Select first meeting initially
+        int i = 0, j = 1;
+        maxMeets.add(meetings[i][2]);
+
+        while (j < n) {
+
+            if (meetings[i][1] < meetings[j][0]) {
+                // Select ith meeting for completion
+                i = j;
+                // Add this meeting ID in the results
+                maxMeets.add(meetings[j][2]);
+            }
+            j++;
+        }
+
+        // If the rsults needed to be in sorted order sort it
+        Collections.sort(maxMeets);
+
+        return maxMeets;
+    }
+
+    public static void main(String[] args) {
+        int[] start = {1, 3, 0, 5, 8, 5}; // Start time 
+        int[] end = {2, 4, 6, 7, 9, 9}; // End time         
+        out.println(maxMeetings(start, end));
+    }
 }
