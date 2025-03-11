@@ -87,8 +87,7 @@ public class LongestBitonicSubsequence
 		
         list.add(0,A[temp]);
         		
-		// lds
-		
+		// lds		
 		temp = ldsSeq[peakIndex];
 		
 		while(ldsSeq[temp] != -1)
